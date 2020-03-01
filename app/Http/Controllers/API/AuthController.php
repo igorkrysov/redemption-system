@@ -27,7 +27,7 @@ class AuthController extends Controller
             return response()->json(['status' => true, 'token' => $token]);
         }
 
-        return response()->json(['status' => false, 'meesages' => ['Login or password are incorrect']]);
+        return response()->json(['status' => false, 'messages' => ['Login or password are incorrect']]);
     }
     public function logout(Request $request) 
     {
