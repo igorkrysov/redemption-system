@@ -24,6 +24,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "cross-env": "^5.2.1"
+    "cross-env": "^5.2.1",
+    "vue-json-pretty": "^1.6.3"
   }
 }
