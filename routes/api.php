@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login', 'API\AuthController@login');
+Route::post('login', 'API\AuthController@login')->name('login');
 
 Route::middleware('auth:api')->group(function() {
     Route::post('/ticket/create', 'API\RedemptionController@createTicket')->name('ticket.create');

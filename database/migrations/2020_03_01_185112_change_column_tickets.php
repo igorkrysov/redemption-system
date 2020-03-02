@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use \Doctrine\DBAL\Types\Type;
 
 class ChangeColumnTickets extends Migration
 {
@@ -13,7 +14,9 @@ class ChangeColumnTickets extends Migration
      */
     public function up()
     {
-        \Doctrine\DBAL\Types\Type::addType('uuid', 'Ramsey\Uuid\Doctrine\UuidType');
+        if (!Type::hasType("uuid")) {
+            Type::addType('uuid', 'Ramsey\Uuid\Doctrine\UuidType');
+        }
         Schema::table('tickets', function (Blueprint $table) {
             $table->uuid('uuid')->unique()->change();
         });
@@ -26,7 +29,9 @@ class ChangeColumnTickets extends Migration
      */
     public function down()
     {
-        \Doctrine\DBAL\Types\Type::addType('uuid', 'Ramsey\Uuid\Doctrine\UuidType');
+        if (!Type::hasType("uuid")) {
+            Type::addType('uuid', 'Ramsey\Uuid\Doctrine\UuidType');
+        }
         Schema::table('tickets', function (Blueprint $table) {
             $table->uuid('uuid')->change();
         });
