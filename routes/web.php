@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/uuid', function () {
-    App\Ticket::generateUUID();
-});
+Route::view('/login', 'login');
+Route::view('/ticket/redemption', 'redemption')->name('ticket.redemption');

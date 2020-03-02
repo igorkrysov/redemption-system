@@ -22,4 +22,6 @@ Route::post('login', 'API\AuthController@login');
 Route::middleware('auth:api')->group(function() {
     Route::post('/ticket/create', 'API\RedemptionController@createTicket')->name('ticket.create');
     Route::post('/ticket/redeem', 'API\RedemptionController@redeemTicket')->name('ticket.redeem');
+
+    Route::post('/logout', 'API\AuthController@logout')->name('logout');
 });

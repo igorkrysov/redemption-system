@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\User;
@@ -21,7 +22,7 @@ class AuthController extends Controller
             return response()->json(['status' => false, 'errors' => $validator->messages()]);
         }
 
-        if (Auth::atempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $token = Auth::User()->createToken('auth')->accessToken;
 
             return response()->json(['status' => true, 'token' => $token]);

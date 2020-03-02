@@ -20,7 +20,7 @@ class Ticket extends Model
             'first_name' => $firstName, 
             'last_name' => $lastName,
             'email' => $email, 
-            'uuid' => $self::generateUUID(),
+            'uuid' => self::generateUUID(),
             'user_id' => $userId
         ]);
 
@@ -33,6 +33,8 @@ class Ticket extends Model
             if ($ticket->is_redeemed) {
                 return ['status' => false, 'messages' => ['The ticket already is redeemed']];
             }
+            $ticket->is_redeemed = true;
+            $ticket->save();
             return ['status' => true, 'messages' => ['The ticket is deemed successful']];
         }
         return ['status' => false, 'messages' => ['The ticket not found']];
