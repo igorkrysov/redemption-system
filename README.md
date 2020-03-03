@@ -7,6 +7,8 @@ php composer.phar install
 
 npm install && npm run dev
 
+cp .env.example .env
+
 Создаем БД и прописываем в .env файле параметры подключения к этой базе
 
 DB_CONNECTION=mysql
@@ -20,6 +22,8 @@ DB_DATABASE=test-task
 DB_USERNAME=php
 
 DB_PASSWORD=123
+
+php artisan key:generate
 
 php artisan migrate
 
