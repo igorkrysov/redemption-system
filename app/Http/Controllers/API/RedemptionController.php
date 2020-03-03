@@ -10,7 +10,7 @@ use Auth;
 
 class RedemptionController extends Controller
 {
-    public function createTicket(Request $request) 
+    public function createTicket(Request $request)
     {
         $rules = [
             'fname' => 'required|string|max:25',
@@ -26,7 +26,7 @@ class RedemptionController extends Controller
         return response()->json(['status' => true, 'uuid' => $ticket->uuid]);
     }
 
-    public function redeemTicket(Request $request) 
+    public function redeemTicket(Request $request)
     {
         $rules = ['uuid' => 'required|uuid'];
         $validator = Validator::make($request->all(), $rules);

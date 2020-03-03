@@ -11,7 +11,7 @@ use Auth;
 
 class AuthController extends Controller
 {
-    public function login(Request $request) 
+    public function login(Request $request)
     {
         Log::info($request->all());
         $rules = [
@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         return response()->json(['status' => false, 'messages' => ['Login or password are incorrect']]);
     }
-    public function logout(Request $request) 
+    public function logout(Request $request)
     {
         Auth::logout();
 

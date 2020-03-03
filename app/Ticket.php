@@ -11,15 +11,15 @@ class Ticket extends Model
 
     private static function generateUUID(): string
     {
-        return Str::uuid()->toString();        
+        return Str::uuid()->toString();
     }
 
     public static function createTicket(string $firstName, string $lastName, string $email, int $userId): Ticket
     {
         $ticket = self::create([
-            'first_name' => $firstName, 
+            'first_name' => $firstName,
             'last_name' => $lastName,
-            'email' => $email, 
+            'email' => $email,
             'uuid' => self::generateUUID(),
             'user_id' => $userId
         ]);
@@ -27,7 +27,7 @@ class Ticket extends Model
         return $ticket;
     }
 
-    public static function redeem(string $uuid): array 
+    public static function redeem(string $uuid): array
     {
         if ($ticket = self::where('uuid', $uuid)->first()) {
             if ($ticket->is_redeemed) {
